@@ -32,8 +32,8 @@ subjectSearch.addEventListener('input', (e) => {
         return;
     }
 
-    const filtered = subjects.filter(sub => 
-        (sub.code && sub.code.toLowerCase().includes(query)) || 
+    const filtered = subjects.filter(sub =>
+        (sub.code && sub.code.toLowerCase().includes(query)) ||
         (sub.name && sub.name.toLowerCase().includes(query))
     );
 
@@ -75,11 +75,11 @@ function addSubject(sub) {
     }
 
     const id = Date.now();
-    const subjectObj = { ...sub, id, scoreType: 'grade', scoreValue: 'O' };
+    const subjectObj = { ...sub, id, scoreType: 'marks', scoreValue: '' };
     addedSubjects.push(subjectObj);
-    
+
     renderSubjectList();
-    
+
     // Reset search
     subjectSearch.value = '';
     searchResults.classList.add('hidden');
@@ -137,7 +137,7 @@ function renderSubjectList() {
             <button class="remove-btn" data-id="${sub.id}">&times;</button>
         `;
         subjectList.appendChild(div);
-        
+
         // Restore value if possible/needed (but simple re-render resets to O/empty)
         // Ideally we bind value from state.
         const inputEl = div.querySelector('.value-input');
@@ -145,11 +145,11 @@ function renderSubjectList() {
             inputEl.value = sub.scoreValue || (sub.scoreType === 'grade' ? 'O' : '');
             inputEl.addEventListener('change', (e) => updateSubjectScore(sub.id, e.target.value));
         }
-        
+
         div.querySelector(`#type-${sub.id}`).addEventListener('change', (e) => {
             updateSubjectScoreType(sub.id, e.target.value);
         });
-        
+
         div.querySelector('.remove-btn').addEventListener('click', () => removeSubject(sub.id));
     });
 }
@@ -183,7 +183,7 @@ calculateBtn.addEventListener('click', () => {
             // Marks to GP
             const m = parseFloat(sub.scoreValue);
             if (isNaN(m)) continue; // Skip invalid
-            
+
             if (m >= 90) gp = 10;
             else if (m >= 80) gp = 9;
             else if (m >= 70) gp = 8;
@@ -205,7 +205,7 @@ calculateBtn.addEventListener('click', () => {
     }
 
     const cgpa = totalPoints / totalCredits;
-    
+
     // Animate results
     totalCreditsEl.textContent = totalCredits;
     cgpaValueEl.textContent = cgpa.toFixed(2);
