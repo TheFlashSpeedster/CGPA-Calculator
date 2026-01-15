@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator | Premium Student Tool</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <main class="glass-container">
+        <header>
+            <h1>CGPA Calculator</h1>
+            <p>Calculate your academic performance with precision.</p>
+        </header>
+
+        <section class="controls">
+            <div class="search-box">
+                <input type="text" id="subjectSearch" placeholder="Search for a subject (e.g. Python, MTH165)...">
+                <div id="searchResults" class="search-results hidden"></div>
+            </div>
+        </section>
+
+        <section class="selected-subjects">
+            <div class="table-header">
+                <span>Subject</span>
+                <span>Credits</span>
+                <span>Score (Grade or Marks)</span>
+                <span>Action</span>
+            </div>
+            <div id="subjectList" class="subject-list">
+                <!-- Added subjects will appear here -->
+                <div class="empty-state">
+                    <p>No subjects added yet. Search to begin.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="results-panel">
+            <button id="calculateBtn" class="primary-btn">Calculate CGPA</button>
+            <div class="result-display">
+                <div class="metric">
+                    <span class="label">Total Credits</span>
+                    <span class="value" id="totalCredits">0</span>
+                </div>
+                <div class="metric">
+                    <span class="label">CGPA</span>
+                    <span class="value highlight" id="cgpaValue">0.00</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="/scripts/script.js"></script>
+</body>
+
+</html>
