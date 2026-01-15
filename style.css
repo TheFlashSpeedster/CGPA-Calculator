@@ -337,6 +337,20 @@ input.mark-input {
     -webkit-text-fill-color: transparent;
 }
 
+footer {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 1.2rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
 /* Responsive */
 @media (max-width: 600px) {
     .glass-container {
