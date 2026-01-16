@@ -62,7 +62,7 @@ function renderSearchResults(results) {
         div.className = 'result-item';
         div.innerHTML = `
             <div>
-                <span class="code">${sub.code}</span>
+                <span class="code"><i class="fa-solid fa-book-open"></i> ${sub.code}</span>
                 <span class="name">${sub.name}</span>
             </div>
             <div class="meta">${sub.credit} Credits</div>
@@ -146,7 +146,7 @@ function renderSubjectList() {
                 <input type="number" class="mark-input value-input" data-id="${sub.id}" placeholder="0-100" min="0" max="100">
                 `}
             </div>
-            <button class="remove-btn" data-id="${sub.id}">&times;</button>
+            <button class="remove-btn" data-id="${sub.id}"><i class="fa-solid fa-trash-can"></i></button>
         `;
         subjectList.appendChild(div);
 

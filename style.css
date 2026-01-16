@@ -2,11 +2,12 @@
     --primary: #6366f1;
     --secondary: #a855f7;
     --accent: #ec4899;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.2);
     --text-main: #ffffff;
     --text-muted: #94a3b8;
     --font-family: 'Outfit', sans-serif;
+    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
 
 * {
@@ -88,12 +89,12 @@ body {
     width: 90%;
     max-width: 800px;
     background: var(--glass-bg);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     border: 1px solid var(--glass-border);
     border-radius: 24px;
-    padding: 2rem;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    padding: 2.5rem;
+    box-shadow: var(--shadow-soft);
     animation: slideUp 0.6s ease-out;
     margin-top: auto;
     position: relative;
@@ -566,12 +567,45 @@ footer a {
 
     .primary-btn {
         width: 100%;
+        justify-content: center;
     }
 
     .custom-subject-trigger {
         flex-direction: column;
         gap: 0.5rem;
     }
+}
+
+/* Icon Utilities */
+.fa-solid, .fa-brands, .fa-regular {
+    margin-right: 0.5rem;
+}
+
+.reset-btn .fa-solid {
+    margin-right: 0.3rem;
+}
+
+/* Enhanced Buttons */
+button {
+    display: inline-flex;
+    align-items: center;
+}
+
+.secondary-btn i, .primary-btn i {
+    font-size: 1.1em;
+}
+
+/* Input Icons support */
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+}
+
+.search-box input {
+    padding-left: 3rem; 
 }/* Button Group */
 .button-group {
   display: flex;
