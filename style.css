@@ -572,4 +572,71 @@ footer a {
         flex-direction: column;
         gap: 0.5rem;
     }
+}/* Button Group */
+.button-group {
+  display: flex;
+  gap: 1rem;
 }
+
+/* Grading System Tables */
+.grade-tables {
+  display: flex;
+  justify-content: space-around;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.grade-column {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--glass-border);
+}
+
+.grade-column h3 {
+  margin-bottom: 1rem;
+  color: var(--secondary);
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.grade-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.grade-table th {
+  padding-bottom: 0.5rem;
+  color: var(--text-muted);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+  font-weight: 600;
+}
+
+.grade-table td {
+  padding: 0.5rem 0;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.grade-table tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .button-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .button-group button {
+    width: 100%;
+  }
+
+  .grade-tables {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+

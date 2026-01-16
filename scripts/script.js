@@ -14,6 +14,9 @@ const closeModalBtn = document.querySelector('.close-modal');
 const addCustomBtn = document.getElementById('addCustomSubjectBtn');
 const customCodeInput = document.getElementById('customCode');
 const customCreditsInput = document.getElementById('customCredits');
+const gradeModal = document.getElementById('gradeSystemModal');
+const openGradeBtn = document.getElementById('openGradeModalBtn');
+const closeGradeBtn = document.getElementById('closeGradeModalBtn');
 
 // State
 let addedSubjects = [];
@@ -308,4 +311,19 @@ addCustomBtn.addEventListener('click', () => {
     customCodeInput.value = '';
     customCreditsInput.value = '';
     customModal.classList.add('hidden');
+});
+
+// Grading System Modal Logic
+openGradeBtn.addEventListener('click', () => {
+    gradeModal.classList.remove('hidden');
+});
+
+closeGradeBtn.addEventListener('click', () => {
+    gradeModal.classList.add('hidden');
+});
+
+gradeModal.addEventListener('click', (e) => {
+    if (e.target === gradeModal) {
+        gradeModal.classList.add('hidden');
+    }
 });

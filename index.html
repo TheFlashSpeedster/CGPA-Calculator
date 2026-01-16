@@ -33,7 +33,10 @@
             </div>
             <div class="custom-subject-trigger">
                 <p>Can't find your subject?</p>
-                <button id="openCustomModalBtn" class="secondary-btn">Add Custom Subject</button>
+                <div class="button-group">
+                    <button id="openCustomModalBtn" class="secondary-btn">Add Custom Subject</button>
+                    <button id="openGradeModalBtn" class="secondary-btn">Grading System</button>
+                </div>
             </div>
         </section>
 
@@ -85,6 +88,38 @@
                 <input type="number" id="customCredits" placeholder="e.g. 3, 4" min="0" step="0.5">
             </div>
             <button id="addCustomSubjectBtn" class="primary-btn">Add Subject</button>
+        </div>
+    </div>
+
+    <!-- Grading System Modal -->
+    <div id="gradeSystemModal" class="modal hidden">
+        <div class="modal-content glass-panel" style="max-width: 600px;">
+            <span class="close-modal" id="closeGradeModalBtn">&times;</span>
+            <h2>Grading System</h2>
+            
+            <div class="grade-tables">
+                <div class="grade-column single-table">
+                    <table class="grade-table">
+                        <thead>
+                            <tr>
+                                <th>Marks Range</th>
+                                <th>Grade</th>
+                                <th>Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>≥ 90</td><td>O</td><td>10</td></tr>
+                            <tr><td>80 - 89</td><td>A+</td><td>9</td></tr>
+                            <tr><td>70 - 79</td><td>A</td><td>8</td></tr>
+                            <tr><td>60 - 69</td><td>B+</td><td>7</td></tr>
+                            <tr><td>50 - 59</td><td>B</td><td>6</td></tr>
+                            <tr><td>40 - 49</td><td>C</td><td>5</td></tr>
+                            <tr><td>35 - 39</td><td>D</td><td>4</td></tr>
+                            <tr><td>&lt; 35</td><td>E / F</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 
