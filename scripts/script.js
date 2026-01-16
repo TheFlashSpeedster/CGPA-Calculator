@@ -5,6 +5,7 @@ const subjectSearch = document.getElementById('subjectSearch');
 const searchResults = document.getElementById('searchResults');
 const subjectList = document.getElementById('subjectList');
 const calculateBtn = document.getElementById('calculateBtn');
+const resetBtn = document.getElementById('resetBtn');
 const totalCreditsEl = document.getElementById('totalCredits');
 const cgpaValueEl = document.getElementById('cgpaValue');
 
@@ -78,6 +79,7 @@ function addSubject(sub) {
     const subjectObj = { ...sub, id, scoreType: 'marks', scoreValue: '' };
     addedSubjects.push(subjectObj);
 
+    saveData();
     renderSubjectList();
 
     // Reset search
@@ -88,6 +90,7 @@ function addSubject(sub) {
 // Remove Subject
 function removeSubject(id) {
     addedSubjects = addedSubjects.filter(s => s.id !== id);
+    saveData();
     renderSubjectList();
 }
 
@@ -159,13 +162,17 @@ function updateSubjectScoreType(id, type) {
     if (sub) {
         sub.scoreType = type;
         sub.scoreValue = type === 'grade' ? 'O' : ''; // Reset value on type switch
+        saveData();
         renderSubjectList();
     }
 }
 
 function updateSubjectScore(id, value) {
     const sub = addedSubjects.find(s => s.id === id);
-    if (sub) sub.scoreValue = value;
+    if (sub) {
+        sub.scoreValue = value;
+        saveData();
+    }
 }
 
 // Calculate
@@ -209,7 +216,44 @@ calculateBtn.addEventListener('click', () => {
     // Animate results
     totalCreditsEl.textContent = totalCredits;
     cgpaValueEl.textContent = cgpa.toFixed(2);
+
+    saveData();
 });
+
+// Persistence
+function saveData() {
+    const data = {
+        subjects: addedSubjects,
+        totalCredits: totalCreditsEl.textContent,
+        cgpa: cgpaValueEl.textContent
+    };
+    localStorage.setItem('cgpaData', JSON.stringify(data));
+}
+
+function loadData() {
+    const data = localStorage.getItem('cgpaData');
+    if (data) {
+        const parsed = JSON.parse(data);
+        addedSubjects = parsed.subjects || [];
+        totalCreditsEl.textContent = parsed.totalCredits || '0';
+        cgpaValueEl.textContent = parsed.cgpa || '0.00';
+        renderSubjectList();
+    }
+}
+
+// Reset
+resetBtn.addEventListener('click', () => {
+    if (confirm('Are you sure you want to clear all data?')) {
+        addedSubjects = [];
+        totalCreditsEl.textContent = '0';
+        cgpaValueEl.textContent = '0.00';
+        localStorage.removeItem('cgpaData');
+        renderSubjectList();
+    }
+});
+
+// Initialize
+loadData();
 
 // Hide search on outside click
 document.addEventListener('click', (e) => {
