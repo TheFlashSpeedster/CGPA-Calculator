@@ -18,6 +18,7 @@
 body {
     font-family: var(--font-family);
     background-color: #0f172a;
+    background-attachment: fixed;
     color: var(--text-main);
     min-height: 100vh;
     display: flex;
@@ -333,6 +334,7 @@ input.mark-input {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
+}
 
 .result-display {
     display: flex;
@@ -388,6 +390,7 @@ footer a {
     margin-top: 1rem;
     color: var(--text-muted);
     font-size: 0.9rem;
+    margin-bottom: 1.3rem;
 }
 
 .secondary-btn {
