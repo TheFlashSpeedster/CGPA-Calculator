@@ -8,6 +8,12 @@ const calculateBtn = document.getElementById('calculateBtn');
 const resetBtn = document.getElementById('resetBtn');
 const totalCreditsEl = document.getElementById('totalCredits');
 const cgpaValueEl = document.getElementById('cgpaValue');
+const customModal = document.getElementById('customSubjectModal');
+const openModalBtn = document.getElementById('openCustomModalBtn');
+const closeModalBtn = document.querySelector('.close-modal');
+const addCustomBtn = document.getElementById('addCustomSubjectBtn');
+const customCodeInput = document.getElementById('customCode');
+const customCreditsInput = document.getElementById('customCredits');
 
 // State
 let addedSubjects = [];
@@ -68,7 +74,7 @@ function renderSearchResults(results) {
 // Add Subject
 function addSubject(sub) {
     // Prevent duplicates
-    if (addedSubjects.find(s => s.code === sub.code && s.code !== "ELECTIVE")) {
+    if (addedSubjects.find(s => s.code === sub.code && s.code !== "ELECTIVE" && s.code !== "CUSTOM")) {
         alert("Subject already added!");
         subjectSearch.value = '';
         searchResults.classList.add('hidden');
@@ -260,4 +266,46 @@ document.addEventListener('click', (e) => {
     if (!e.target.closest('.search-box')) {
         searchResults.classList.add('hidden');
     }
+});
+
+// Custom Subject Modal Logic
+openModalBtn.addEventListener('click', () => {
+    customModal.classList.remove('hidden');
+});
+
+closeModalBtn.addEventListener('click', () => {
+    customModal.classList.add('hidden');
+});
+
+customModal.addEventListener('click', (e) => {
+    if (e.target === customModal) {
+        customModal.classList.add('hidden');
+    }
+});
+
+addCustomBtn.addEventListener('click', () => {
+    const inputVal = customCodeInput.value.trim();
+    const credits = parseFloat(customCreditsInput.value);
+
+    if (isNaN(credits) || credits < 0) {
+        alert("Please enter valid credits.");
+        return;
+    }
+
+    // Use input for both code and name if provided, else defaults
+    const code = inputVal || 'CUSTOM';
+    const name = inputVal || 'Custom Subject';
+
+    const sub = {
+        code: code,
+        name: name,
+        credit: credits
+    };
+
+    addSubject(sub);
+
+    // Clear and Close
+    customCodeInput.value = '';
+    customCreditsInput.value = '';
+    customModal.classList.add('hidden');
 });
