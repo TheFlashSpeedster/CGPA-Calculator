@@ -334,7 +334,6 @@ input.mark-input {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
 }
-}
 
 .result-display {
     display: flex;
@@ -560,7 +559,7 @@ footer a {
     .metric {
         text-align: center;
         flex: 1;
-        background: rgba(255,255,255,0.03);
+        background: rgba(255, 255, 255, 0.03);
         padding: 1rem;
         border-radius: 12px;
     }
