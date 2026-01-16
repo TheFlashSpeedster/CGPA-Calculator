@@ -11,6 +11,6 @@ A simple and efficient web-based CGPA Calculator to help students track their ac
 ## Todo List
 
 - [ ] ability to select college and its programs
-- [ ] add custom subjects
+- [x] add custom subjects
 - [x] save results in localStorage with reset button
 - [ ] import subjects code and credits from a txt file
